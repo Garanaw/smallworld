@@ -13,6 +13,7 @@ case "$COMMAND" in
         cp .env.example .env
         ${ARTISAN} key:generate
         chmod -R 777 storage/
+        ${ARTISAN} storage:link
         ;;
     migrate)
         ${ARTISAN} migrate:install
