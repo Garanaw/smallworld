@@ -16,4 +16,23 @@ class Currency extends Model
     {
         return $this->belongsTo(Country::class);
     }
+    
+    public function getId(): int
+    {
+        return (int)$this->attributes['id'];
+    }
+    
+    public function getName(): string
+    {
+        return $this->attributes['currency'];
+    }
+    
+    public function getCountry(): Country
+    {
+        if ($this->relationLoaded('country') === false) {
+            $this->load('country');
+        }
+        
+        return $this->relations['country'];
+    }
 }

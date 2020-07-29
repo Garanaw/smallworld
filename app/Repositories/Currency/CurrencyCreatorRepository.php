@@ -14,7 +14,7 @@ final class CurrencyCreatorRepository
         $this->model = $model;
     }
     
-    public function create(CreateCurrency $data): bool
+    public function create(CreateCurrency $data): Currency
     {
         $currency = $this->model->create($data->toArray());
         
@@ -22,6 +22,6 @@ final class CurrencyCreatorRepository
             return false;
         }
         
-        return $currency->wasRecentlyCreated;
+        return $currency;
     }
 }

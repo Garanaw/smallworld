@@ -4,6 +4,7 @@ namespace App\Services\Currency;
 
 use App\Repositories\Currency\CurrencyCreatorRepository as Creator;
 use App\DTOS\CreateCurrency;
+use App\Models\Currency;
 
 final class CurrencyCreatorService
 {
@@ -14,7 +15,7 @@ final class CurrencyCreatorService
         $this->creator = $creator;
     }
     
-    public function create(CreateCurrency $data): bool
+    public function create(CreateCurrency $data): Currency
     {
         return $this->creator->create($data);
     }
