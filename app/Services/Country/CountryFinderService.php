@@ -14,8 +14,8 @@ class CountryFinderService
         $this->repository = $repository;
     }
     
-    public function getAll(): Collection
+    public function getAllWithoutCurrency(): Collection
     {
-        return $this->repository->getAll();
+        return $this->repository->getAllWithoutCurrency();
     }
 }

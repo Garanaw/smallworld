@@ -14,8 +14,11 @@ class CountryFinderRepository
         $this->model = $model;
     }
     
-    public function getAll(): Collection
+    public function getAllWithoutCurrency(): Collection
     {
-        return $this->model->all();
+        return $this->model
+            ->whereDoesntHave('currency')
+            ->orderBy('name')
+            ->get();
     }
 }
