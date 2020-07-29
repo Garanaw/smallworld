@@ -21,4 +21,12 @@ class CountryFinderRepository
             ->orderBy('name')
             ->get();
     }
+    
+    public function getAll(): Collection
+    {
+        return $this->model
+            ->with('currency')
+            ->orderBy('name')
+            ->get();
+    }
 }

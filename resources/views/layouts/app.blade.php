@@ -95,6 +95,11 @@
                                 {{ __('currency.create') }}
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('country.index') }}">
+                                {{ __('currency.country') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 

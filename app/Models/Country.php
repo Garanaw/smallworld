@@ -25,4 +25,14 @@ class Country extends Model
     {
         return $this->attributes['name'];
     }
+    
+    public function hasCurrency(): bool
+    {
+        return $this->currency !== null;
+    }
+    
+    public function getCurrency(): ?Currency
+    {
+        return $this->relations['currency'];
+    }
 }
