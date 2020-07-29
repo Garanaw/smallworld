@@ -7,4 +7,5 @@ return [
     'created'       => 'The currency has been successfully saved',
     'country'       => 'Country',
     'show_title'    => 'Viewing currency :name',
+    'delete'        => 'Delete',
 ];

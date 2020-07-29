@@ -23,6 +23,23 @@
             <div class="card-body">
                 {{ __('currency.country') }}: {{ $currency->getCountry()->getName() }}
             </div>
+            
+            <div class="card-footer">
+                <form
+                    action="{{ route('currency.delete', ['currency' => $currency->getId()]) }}"
+                    method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <input
+                        type="hidden"
+                        name="currency_id"
+                        value="{{ $currency->getId() }}">
+                    
+                    <button class="btn btn-danger">
+                        {{ __('currency.delete') }}
+                    </buton>
+                </form>
+            </div>
         </div>
         
     </div>
