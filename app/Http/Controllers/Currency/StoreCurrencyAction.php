@@ -39,7 +39,7 @@ class StoreCurrencyAction extends Controller
         );
         
         try {
-            $this->creator->create($currency);
+            $createdCurrency = $this->creator->create($currency);
         } catch (Throwable $exception) {
             return $this->redirector
                 ->back()
@@ -47,7 +47,9 @@ class StoreCurrencyAction extends Controller
         }
         
         return $this->redirector
-            ->route('currency.create');
+            ->route('currency.show', [
+                'currency' => $createdCurrency->getId(),
+            ]);
         
         
     }
