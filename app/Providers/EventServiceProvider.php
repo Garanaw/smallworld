@@ -1,11 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Events\MigrationEnded as MigrationEndedEvent;
+use App\Listeners\Database\MigrationEnded as MigrationEndedListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        MigrationEndedEvent:: class => [
+            MigrationEndedListener::class
+        ]
     ];
 
     /**
@@ -28,7 +32,5 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
     }
 }
