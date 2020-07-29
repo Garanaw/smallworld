@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-
+    
+    private Router $router;
+    
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -42,11 +45,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        $this->router = app(Router::class);
+        
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -58,9 +61,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
+        $this->router->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+        
+        $this->router->middleware('web')
+            ->prefix('currency')
+            ->namespace($this->namespace . '\Currency')
+            ->group(base_path('routes/currency.php'));
     }
 
     /**

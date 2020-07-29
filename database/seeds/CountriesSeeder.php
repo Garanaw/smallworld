@@ -8,7 +8,7 @@ final class CountriesSeeder extends Seeder
     
     public function run(): void
     {
-        for ($i = 1; $i < $this->fakeCountries; $i++) {
+        for ($i = 1; $i <= $this->fakeCountries; $i++) {
             Country::create([
                 'name' => $this->faker->country,
             ]);
