@@ -69,6 +69,11 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('currency')
             ->namespace($this->namespace . '\Currency')
             ->group(base_path('routes/currency.php'));
+        
+        $this->router->middleware('web')
+            ->prefix('country')
+            ->namespace($this->namespace . '\Country')
+            ->group(base_path('routes/country.php'));
     }
 
     /**
