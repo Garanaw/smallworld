@@ -42,3 +42,7 @@ With this values, run the command:
 ```
 php artisan test
 ```
+
+## Answers to the Assessment:
+
+[To see the answers to the assessment, click here](https://github.com/Garanaw/smallworld/blob/master/prueba-smallworldfinancials.pdf)
